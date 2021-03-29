@@ -16,6 +16,7 @@ Soon!
   * Clickable text
   * Hoverable text
 * Item
+  * SkullBuilder
   * ItemBuilder
     *  NBT
 * ~~More soon~~
