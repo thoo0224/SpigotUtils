@@ -7,14 +7,15 @@ Soon!
 
 # TODO
 * Kotlin version
-* Custom configs
+* Config
+  * ~~Custom configs~~
+  * Serialization
 * Better and faster event system
 * Chat
   * ~~Chat color~~
   * Clickable text
   * Hoverable text
 * Item
-  * Configuration serialization
   * ItemBuilder
     *  NBT
 * ~~More soon~~
