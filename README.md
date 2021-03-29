@@ -8,7 +8,7 @@ Soon!
 # TODO
 * Kotlin version
 * Custom configs
-* Bett
+* Better and faster event system
 * Chat
   * ~~Chat color~~
   * Clickable text
