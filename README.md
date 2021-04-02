@@ -1,6 +1,6 @@
 # Spigot utilities
 
-This plugin provides some usefull utilities to make develop spigot plugins much easier and better.
+This plugin provides some useful utilities to make develop spigot plugins much easier and better.
 
 # Examples
 Soon!
@@ -10,6 +10,10 @@ Soon!
 * Config
   * ~~Custom configs~~
   * Serialization
+    * ~~Primitive types and Primitive wrappers~~
+    * ~~Objects~~
+    * Collections
+    * Improve
 * Better and faster event system
 * Chat
   * ~~Chat color~~
