@@ -9,11 +9,9 @@ Soon!
 * Kotlin version
 * Config
   * ~~Custom configs~~
-  * Serialization
-    * ~~Primitive types and Primitive wrappers~~
-    * ~~Objects~~
-    * Collections
-    * Improve
+  * ~~Serialization~~
+  * Deserialization
+  * (De)Serialization overrideables
 * Better and faster event system
 * Chat
   * ~~Chat color~~
