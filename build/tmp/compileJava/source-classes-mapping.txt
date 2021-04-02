@@ -14,5 +14,9 @@ com/thoo/spigot/annotations/ConfigSerializable.java
  com.thoo.spigot.annotations.ConfigSerializable
 com/thoo/spigot/annotations/Serialize.java
  com.thoo.spigot.annotations.Serialize
+com/thoo/spigot/config/Serializable.java
+ com.thoo.spigot.config.Serializable
+com/thoo/spigot/config/ConfigSerializationOverrideable.java
+ com.thoo.spigot.config.ConfigSerializationOverrideable
 com/thoo/spigot/config/CustomConfiguration.java
  com.thoo.spigot.config.CustomConfiguration

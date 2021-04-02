@@ -1,9 +1,10 @@
 package com.thoo.test;
 
 import com.thoo.spigot.annotations.ConfigSerializable;
+import com.thoo.spigot.config.Serializable;
 
 @ConfigSerializable
-public class ItemModel {
+public class ItemModel extends Serializable {
 
     public int age = 69;
     public double test = 420.0;

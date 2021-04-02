@@ -1,6 +1,7 @@
 package com.thoo.test;
 
 import com.thoo.spigot.annotations.ConfigSerializable;
+import com.thoo.spigot.config.CustomConfiguration;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -25,7 +26,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws IllegalAccessException {
-
+        CustomConfiguration.registerSerializationOverrideable(ItemModel.class, new TestOverrideable());
         serialize("section", new TestModel());
     }
 

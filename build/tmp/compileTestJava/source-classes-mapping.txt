@@ -1,6 +1,8 @@
-com/thoo/test/TestModel.java
- com.thoo.test.TestModel
 com/thoo/test/ItemModel.java
  com.thoo.test.ItemModel
+com/thoo/test/TestModel.java
+ com.thoo.test.TestModel
+com/thoo/test/TestOverrideable.java
+ com.thoo.test.TestOverrideable
 com/thoo/test/Test.java
  com.thoo.test.Test
