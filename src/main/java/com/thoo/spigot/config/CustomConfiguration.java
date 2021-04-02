@@ -1,15 +1,16 @@
 package com.thoo.spigot.config;
 
 import com.thoo.spigot.annotations.ConfigSerializable;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.logging.Level;
 
 public final class CustomConfiguration extends YamlConfiguration {
@@ -51,6 +52,10 @@ public final class CustomConfiguration extends YamlConfiguration {
         }
     }
 
+    public void save() throws IOException {
+        save(file);
+    }
+
     public <T> void serialize(String key, T t) throws IllegalAccessException {
         Class<?> clazz = t.getClass();
         boolean skipNonPublicFields = true;
@@ -59,6 +64,7 @@ public final class CustomConfiguration extends YamlConfiguration {
             skipNonPublicFields = annotation.skipNonPublicFields();
         }
 
+        set(key + ".class", clazz.getName());
         Field[] fields = clazz.getDeclaredFields();
         for(Field field : fields) {
             if(!field.isAccessible()) {
@@ -71,7 +77,7 @@ public final class CustomConfiguration extends YamlConfiguration {
             }
 
             if(TYPE_SET.contains(field.getType()) || field.getType().isAssignableFrom(Collection.class) || field.getType().isArray()) {
-                set(key + field.getName(), field.get(t));
+                set(key + "." + field.getName(), field.get(t));
                 continue;
             }
 
