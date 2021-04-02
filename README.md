@@ -11,7 +11,7 @@ Soon!
   * ~~Custom configs~~
   * ~~Serialization~~
   * Deserialization
-  * (De)Serialization overrideables
+  * ~~Type adapters~~
 * Better and faster event system
 * Chat
   * ~~Chat color~~
