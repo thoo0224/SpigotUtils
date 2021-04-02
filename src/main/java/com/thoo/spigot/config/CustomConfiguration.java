@@ -1,7 +1,10 @@
 package com.thoo.spigot.config;
 
 import com.thoo.spigot.annotations.ConfigSerializable;
+import com.thoo.spigot.config.adapters.LocationTypeAdapter;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -33,7 +36,7 @@ public final class CustomConfiguration extends YamlConfiguration {
                 Short.class, short.class,
                 String.class);
     }
-    private static final HashMap<Class<? extends Serializable>, ConfigTypeAdapter<? extends Serializable>> TYPE_ADAPTERS = new HashMap<>();
+    private static final HashMap<Class<? extends ConfigurationSerializable>, ConfigTypeAdapter<? extends ConfigurationSerializable>> TYPE_ADAPTERS = new HashMap<>();
 
     public CustomConfiguration(JavaPlugin plugin, String fileName) {
         this.fileName = fileName;
@@ -59,7 +62,7 @@ public final class CustomConfiguration extends YamlConfiguration {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends Serializable> void serialize(String key, T t) throws IllegalAccessException {
+    public <T> void serialize(String key, T t) throws IllegalAccessException, IOException {
         Class<?> clazz = t.getClass();
         boolean skipNonPublicFields = true;
         if(clazz.isAnnotationPresent(ConfigSerializable.class)) {
@@ -93,6 +96,7 @@ public final class CustomConfiguration extends YamlConfiguration {
             ConfigTypeAdapter<T> typeAdapter = (ConfigTypeAdapter<T>) CustomConfiguration.TYPE_ADAPTERS.getOrDefault(field.getType(), null);
             if(typeAdapter != null) {
                 typeAdapter.serialize(fieldKey, (T) field.get(t), this);
+                save();
                 continue;
             }
 
@@ -102,6 +106,10 @@ public final class CustomConfiguration extends YamlConfiguration {
 
     public static void registerTypeAdapter(Class<? extends Serializable> clazz, ConfigTypeAdapter<? extends Serializable> overrideable) {
         CustomConfiguration.TYPE_ADAPTERS.put(clazz, overrideable);
+    }
+
+    public static void registerDefaultTypeAdapters() {
+        CustomConfiguration.TYPE_ADAPTERS.put(Location.class, new LocationTypeAdapter());
     }
 
     private static void addAllTypes(Class<?>... classes) {
