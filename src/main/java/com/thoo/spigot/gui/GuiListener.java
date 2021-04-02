@@ -13,22 +13,31 @@ public final class GuiListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onClick(InventoryClickEvent e){
         InventoryHolder holder = e.getInventory().getHolder();
-        if (!(holder instanceof Gui)) return;
+        if (!(holder instanceof Gui)) {
+            return;
+        }
+
         e.setCancelled(((Gui) holder).onClick((Player) e.getWhoClicked(), e.getRawSlot(), e.getClick()));
     }
 
     @EventHandler
     public void onOpen(InventoryOpenEvent e) {
         InventoryHolder holder = e.getInventory().getHolder();
-        if (holder instanceof Gui) {
-            ((Gui) holder).onOpen((Player) e.getPlayer());
+        if (!(holder instanceof Gui)) {
+            return;
         }
+
+        ((Gui) holder).onOpen((Player) e.getPlayer());
     }
 
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         final InventoryHolder holder = e.getInventory().getHolder();
-        if (holder instanceof Gui) ((Gui) holder).onClose((Player) e.getPlayer());
+        if (!(holder instanceof Gui)) {
+            return;
+        }
+
+        ((Gui) holder).onClose((Player) e.getPlayer());
     }
 
 }
